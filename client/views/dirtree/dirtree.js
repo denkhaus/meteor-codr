@@ -11,12 +11,15 @@ Template.dirtree.rendered = function(){
 	refreshTreeView(false, function(error, data){
 		$('#dirtree').tree({
             data: [data],
-            autoOpen: true,
+            autoOpen: false,
             dragAndDrop: false
         });
+
 		$('#dirtree').bind('tree.dblclick',function(e) {
 			if(e.node.type == "file"){
-				console.log(Meteor.call('editorOpenFile',e.node.path));
+				Meteor.call('editorOpenFile',e.node.path, function(error, data){
+					console.log("server response -> editorOpenFile:" + data);	
+				});				
 			}
         	console.log(e.node);
     	});
@@ -25,10 +28,13 @@ Template.dirtree.rendered = function(){
 
 Template.dirtreeoptions.rendered = function(){	
 	$('#btnShowHidden').click(function () {
-		var checked = $(this).hasClass('active');
-		
+		var label = $(this);
+		var checked = !label.hasClass('active');		
+		var txt = label.text();
+		label.text("Load Directory...");
 		refreshTreeView(checked, function(error, data){
 			$('#dirtree').tree('loadData', [data]);
+			label.text(txt);
 		});    
 	});
 };
