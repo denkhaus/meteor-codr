@@ -1,0 +1,40 @@
+
+<template name="editor">
+    {{> aceEditor }}
+</template>
+<template name="editor-full">
+<div class="container">
+    <div class="row">
+        <div class="span5 editor">
+            {{> aceEditor }}
+            <hr>
+            <div id="status">
+                {{status}}
+            </div>
+            <hr>
+            <div id="errorDisplay">
+                {{errorDisplay}}
+            </div>
+            <hr>
+            <div id="tagList">
+                {{> tagList}}
+            </div>
+        </div>
+        
+        <div class="span5 ast">
+            <h2>Ast</h2>
+            <pre>{{ast}}</pre>
+        </div>
+    </div>
+</div>
+</template>
+<template name="tagList">
+  <div>
+    <h2>Tags</h2>
+    <ul>
+        {{#each tags}}
+          <li>{{name}}: ({{position.line}}, {{position.column}})</li>
+        {{/each}}
+    </ul>
+  </div>
+</template>
