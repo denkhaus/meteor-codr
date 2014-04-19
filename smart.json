@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "iron-router": {},
+    "reactive-ace": {
+      "git": "https://github.com/mad-eye/meteor-reactive-ace.git"
+    },
+    "bootstrap3-less": {},
+    "npm": {},
+    "accounts-ui-bootstrap-3": {}
+  }
+}

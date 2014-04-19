@@ -1,0 +1,17 @@
+<head>
+  <title>Hello Ace!</title>
+  <script type="text/javascript" src="/js/jquery.layout-latest.js"></script> 
+  <script type="text/javascript" src="/js/tree.jquery.js"></script>  
+</head>
+<body> 
+</body>
+<template name="main">
+	{{> navbar}}
+	<div id="lmain">
+		<div id="lcenter" class="ui-layout-center">
+			<div class="ui-layout-center">{{> tabctrl}}</div>
+			<div class="ui-layout-south">South</div>
+		</div>		
+		<div class="ui-layout-west">{{> dirtree}}</div>
+	</div>
+</template>
