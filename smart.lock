@@ -3,24 +3,16 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "reactive-ace": {
-        "git": "https://github.com/mad-eye/meteor-reactive-ace.git",
-        "branch": "master"
-      },
       "bootstrap3-less": {},
       "npm": {},
-      "accounts-ui-bootstrap-3-blaze": {}
+      "accounts-ui-bootstrap-3-blaze": {},
+      "ace-embed": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.1",
         "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
-      },
-      "reactive-ace": {
-        "git": "https://github.com/mad-eye/meteor-reactive-ace.git",
-        "branch": "master",
-        "commit": "869774ad51fdd130119df8cc03831172cab993f2"
       },
       "bootstrap3-less": {
         "git": "https://github.com/eprochasson/bootstrap3-less",
@@ -36,6 +28,11 @@
         "git": "https://github.com/rajit/meteor-accounts-ui-bootstrap-3.git",
         "tag": "v0.3.6",
         "commit": "e8b1d1f9a2518dd91562f8096bd0831ae27e4e41"
+      },
+      "ace-embed": {
+        "git": "https://github.com/stuartfenton/meteor-ace-embed.git",
+        "tag": "v0.0.4",
+        "commit": "027b0e1b0d06111b51a713f04a8b8750fdcbd289"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

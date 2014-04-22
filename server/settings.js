@@ -1,6 +1,6 @@
 createDefaultSettings = function(userId){
 
-	defSettings = {};
+	var defSettings = {};
 	defSettings['userid'] = userId;
 	defSettings['showhiddenfiles'] = false;
 	Settings.insert(defSettings);

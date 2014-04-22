@@ -6,10 +6,10 @@
 standard-app-packages
 npm
 bootstrap3-less
-reactive-ace
 iron-router
 accounts-base
 less
 service-configuration
 accounts-ui-bootstrap-3-blaze
 accounts-password
+ace-embed

@@ -11,7 +11,7 @@ var clearAllActiveState = function(){
 Meteor.methods({
   workingDirGetData: function (includeDotFiles) {
       if(allowFileOperation(this.userId)) {
-          return dir2json("/home/denkhaus/dev/meteor", includeDotFiles);
+          return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
       }
 	  return {};
   },
@@ -29,6 +29,8 @@ Meteor.methods({
    editorCloseFile: function(entryId) {
       if(allowFileOperation(this.userId)) {
           Files.remove({_id: entryId});
+          return true;
       }
+       return false;
    }
 });

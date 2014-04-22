@@ -1,14 +1,14 @@
 <template name="tabctrl">
 <ul class="nav nav-tabs" id="mainTab">
-    {{#each files}}
+   {{#each files}}
         <li class="{{active}}" ><a href="#{{_id}}" data-toggle="tab">
             <button class="close closeTab" type="button" >×</button>{{name}}</a>
         </li>
-    {{/each}}
+   {{/each}}
 </ul>
 <div class="tab-content">
     {{#each files}}
-        <div class="tab-pane {{active}}" id="{{_id}}">{{> editor}}</div>
+        <div class="tab-pane {{active}}" id="{{_id}}">{{> editor id=_id}}</div>
     {{/each}}
 </div>
 </template>
