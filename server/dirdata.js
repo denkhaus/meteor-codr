@@ -1,20 +1,34 @@
 
 var dir2json = Meteor.require("dir2json");
 
+var clearAllActiveState = function(){
+    Files.update({},
+            {$set: { active: " "}},
+            {multiple: true}
+    );
+}
+
 Meteor.methods({
   workingDirGetData: function (includeDotFiles) {
-      if(canViewFiles(this.userId)) {
-          return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
+      if(allowFileOperation(this.userId)) {
+          return dir2json("/home/denkhaus/dev/meteor", includeDotFiles);
       }
 	  return {};
   },
-  editorOpenFile: function (path) {
-      if(canViewFiles(this.userId)) {
-          if(Files.find({path: path}, {limit:1}).count() == 0){
-              Files.insert({path: path});
-              return "inserted:" + path;
+  editorOpenFile: function (name, path) {
+      if(allowFileOperation(this.userId)) {
+          clearAllActiveState();
+          var fAvailable = Files.find({path: path}, {limit:1}).count() > 0;
+          if(! fAvailable ){
+              Files.insert({name: name, path: path, active: "active"});
+          }else if( fAvailable){
+              Files.update({path: path}, {$set: { active: "active"}});
           }
       }
-      return "not inserted";
-  }  
+  },
+   editorCloseFile: function(entryId) {
+      if(allowFileOperation(this.userId)) {
+          Files.remove({_id: entryId});
+      }
+   }
 });

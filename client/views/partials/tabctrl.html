@@ -1,17 +1,14 @@
 <template name="tabctrl">
-	<!-- Nav tabs -->
 <ul class="nav nav-tabs" id="mainTab">
-  <li class="active"><a href="#home" data-toggle="tab"><button class="close closeTab" type="button" >×</button>Home</a></li>
-  <li><a href="#profile" data-toggle="tab">Profile</a><i class="icon-remove"></i></li>
-  <li><a href="#messages" data-toggle="tab"><button class="close closeTab" type="button" >×</button>Messages</a></li>
-  <li><a href="#settings" data-toggle="tab"><button class="close closeTab" type="button" >×</button>Settings</a></li>
+    {{#each files}}
+        <li class="{{active}}" ><a href="#{{_id}}" data-toggle="tab">
+            <button class="close closeTab" type="button" >×</button>{{name}}</a>
+        </li>
+    {{/each}}
 </ul>
-
-<!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="home">{{> editor}}</div>
-  <div class="tab-pane" id="profile">...</div>
-  <div class="tab-pane" id="messages">...</div>
-  <div class="tab-pane" id="settings">...</div>
+    {{#each files}}
+        <div class="tab-pane {{active}}" id="{{_id}}">{{> editor}}</div>
+    {{/each}}
 </div>
 </template>
