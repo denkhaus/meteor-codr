@@ -11,6 +11,15 @@ Template.tabctrl.rendered = function(){
             }
         });
     });
+    
+    // set focus on editor by selected tab
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        
+        var actTab = e.target;
+        var prevTab = e.relatedTarget;
+        var editorId = "aceEdit-" + actTab.attr("href").substring(1);
+        $('#' + editorId).focus();
+    });
 };
 
 Template.tabctrl.files = function(){

@@ -9,4 +9,13 @@ Template.editor.rendered = function(){
     editor.getSession().setMode("ace/mode/css");
     editor.setHighlightActiveLine(true);
     editor.resize(true);
+    
+    var path = this.data.path;
+    Meteor.call('editorGetFileContent', path, function(err, res){
+        if(err){
+            console.log("Can't get file content of path " + path + " Error:: " + err);
+            return;
+        }
+        editor.setValue(res);
+    });
 }

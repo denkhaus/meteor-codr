@@ -8,7 +8,7 @@
 </ul>
 <div class="tab-content">
     {{#each files}}
-        <div class="tab-pane {{active}}" id="{{_id}}">{{> editor id=_id}}</div>
+        <div class="tab-pane {{active}}" id="{{_id}}">{{> editor id=_id path=path}}</div>
     {{/each}}
 </div>
 </template>
