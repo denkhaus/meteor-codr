@@ -6,8 +6,15 @@ body, html {
 
 .nav-tabs{
 	&> li{
-		&> a{
-			border-radius: 0 !important;
-		}
+      &> a{
+          border-radius: 0 !important;
+      }
 	}
+
+    &> li.active{
+      &> a{
+        background-color: #e7e7e7 !important;
+        border: none !important;
+      }
+    }
 }

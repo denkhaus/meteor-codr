@@ -11,7 +11,7 @@ var clearAllActiveState = function(){
 Meteor.methods({
   workingDirGetData: function (includeDotFiles) {
       if(allowFileOperation(this.userId)) {
-          return dir2json("/home/denkhaus/meteor", includeDotFiles);
+          return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
       }
       return {};
   }, 
