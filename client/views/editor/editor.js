@@ -1,11 +1,12 @@
 Template.editor.rendered = function () {
 
+    var self = this;
     var elmEdit = this.find("#aceEditor");
-    var newEditorId = "aceEdit-" + this.data.id;
+    var newEditorId = "aceEdit-" + self.data.id;
     elmEdit.id = newEditorId
 
     var elmStatus = this.find("#aceStatusBar");
-    elmStatus.id = "aceStatus-" + this.data.id;
+    elmStatus.id = "aceStatus-" + self.data.id;
 
     var editor = ace.edit(newEditorId);
     //editor.setTheme("ace/theme/monokai");
@@ -13,7 +14,12 @@ Template.editor.rendered = function () {
     //editor.setHighlightActiveLine(true);
 
     editor.setAutoScrollEditorIntoView();
-    registerEditor(this.data.id, editor);
+
+    registerEditor({
+        ed: editor,
+        id: self.data.id,
+        path: self.data.path
+    });
 
     editor.getSession().on('change', function (e) {
 
@@ -51,10 +57,10 @@ Template.editor.rendered = function () {
             mac: 'Command-S'
         },
         exec: function (editor) {
-            editorSaveContent(editor, this.data.path);
+            editorSaveContent(editor, self.data.path);
         },
         readOnly: false // false if this command should not apply in readOnly mode
     });
 
-    editorLoadContent(editor, this.data.path);
+    editorLoadContent(editor, self.data.path);
 }

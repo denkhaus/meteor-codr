@@ -4,6 +4,10 @@
     "bootstrap3-less": {},
     "npm": {},
     "accounts-ui-bootstrap-3-blaze": {},
-    "ace-embed": {}
+    "ace-embed": {},
+    "crypto-base64": {
+      "git": "https://github.com/denkhaus/meteor-crypto-base64.git"
+    },
+    "pnotify": {}
   }
 }

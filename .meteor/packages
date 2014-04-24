@@ -13,3 +13,5 @@ service-configuration
 accounts-ui-bootstrap-3-blaze
 accounts-password
 ace-embed
+crypto-base64
+pnotify

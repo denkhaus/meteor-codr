@@ -1,41 +1,110 @@
+var dir2json = Meteor.require('dir2json');
+var fs = Meteor.require('fs');
 
-var dir2json = Meteor.require("dir2json");
-
-var clearAllActiveState = function(){
-    Files.update({},
-            {$set: { active: " "}},
-            {multiple: true}
-    );
+function clearAllActiveState() {
+    Files.update({}, {
+        $set: {
+            active: " "
+        }
+    }, {
+        multiple: true
+    });
 }
 
+
 Meteor.methods({
-  workingDirGetData: function (includeDotFiles) {
-      if(allowFileOperation(this.userId)) {
-          return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
-      }
-      return {};
-  }, 
-  editorOpenFile: function (name, path) {
-      if(allowFileOperation(this.userId)) {
-          clearAllActiveState();
-          var fAvailable = Files.find({path: path}, {limit:1}).count() > 0;
-          if(! fAvailable ){
-              Files.insert({name: name, path: path, active: "active"});
-          }else if( fAvailable){
-              Files.update({path: path}, {$set: { active: "active"}});
-          }
-      }
-  },
-   editorCloseFile: function(entryId) {
-      if(allowFileOperation(this.userId)) {
-          Files.remove({_id: entryId});
-          return true;
-      }
-       return false;
-   },
-   editorGetFileContent: function (path) {
-      if(allowFileOperation(this.userId)){
-          return "This is the Content of " + path + " File";
-      }
-  }
+
+    workingDirGetData: function (includeDotFiles) {
+        if (allowFileOperation(this.userId)) {
+            return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
+        } else {
+            return new Meteor.Error(405, 'Not allowed');
+        }
+    },
+
+    editorOpenFile: function (name, path) {
+        if (allowFileOperation(this.userId)) {
+            clearAllActiveState();
+
+            var fAvailable = Files.find({
+                path: path
+            }, {
+                limit: 1
+            }).count() > 0;
+
+            if (!fAvailable) {
+                Files.insert({
+                    name: name,
+                    path: path,
+                    active: "active"
+                });
+            } else if (fAvailable) {
+                Files.update({
+                    path: path
+                }, {
+                    $set: {
+                        active: "active"
+                    }
+                });
+            }
+        } else {
+            return new Meteor.Error(405, 'Not allowed');
+        }
+    },
+
+    editorCloseFile: function (entryId) {
+        if (allowFileOperation(this.userId)) {
+            Files.remove({
+                _id: entryId
+            });
+            return true;
+        } else {
+            return new Meteor.Error(405, 'Not allowed');
+        }
+    },
+
+    editorGetFileContent: function (path) {
+        if (allowFileOperation(this.userId)) {
+            var res = Meteor.sync(function (done) {
+                fs.readFile(path, 'utf8', function (err, data) {
+                    if (!err) {
+                        done(null, stringToBase64(data));
+                    }
+                    done(err, null);
+                });
+            });
+
+            if (res.error) {
+                return new Meteor.Error(res.error.errno,
+                    "Can't read file content",
+                    res.error.message);
+            }
+
+            return res.result;
+
+        } else {
+            return new Meteor.Error(405, 'Not allowed');
+        }
+    },
+
+    editorSetFileContent: function (path, base64) {
+        if (allowFileOperation(this.userId)) {
+            var content = base64ToString(base64);
+            var res = Meteor.sync(function (done) {
+                fs.writeFile(path, content, function (err) {
+                    done(err, true);
+                });
+            });
+
+            if (res.error) {
+                return new Meteor.Error(res.error.errno,
+                    "Can't write file content",
+                    res.error.message);
+            }
+
+            return res.result;
+        } else {
+            return new Meteor.Error(405, 'Not allowed');
+        }
+    }
 });

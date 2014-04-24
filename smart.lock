@@ -6,7 +6,12 @@
       "bootstrap3-less": {},
       "npm": {},
       "accounts-ui-bootstrap-3-blaze": {},
-      "ace-embed": {}
+      "ace-embed": {},
+      "crypto-base64": {
+        "git": "https://github.com/denkhaus/meteor-crypto-base64.git",
+        "branch": "master"
+      },
+      "pnotify": {}
     },
     "packages": {
       "iron-router": {
@@ -34,10 +39,25 @@
         "tag": "v0.0.4",
         "commit": "027b0e1b0d06111b51a713f04a8b8750fdcbd289"
       },
+      "crypto-base64": {
+        "git": "https://github.com/denkhaus/meteor-crypto-base64.git",
+        "branch": "master",
+        "commit": "558657a7d51acf00d7a1581cdad594b2db20f901"
+      },
+      "pnotify": {
+        "git": "https://github.com/kidovate/meteor-pnotify.git",
+        "tag": "v2.0.6",
+        "commit": "cbd0bb220d03b20b247e4a6a7bdfc3d2c8064216"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
         "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
+      },
+      "crypto-base": {
+        "git": "https://github.com/oortcloud/meteor-crypto-base.git",
+        "tag": "v3.1.2.1",
+        "commit": "5df8d82a0595553415bbfae2930c6ecbeece5794"
       }
     }
   }
