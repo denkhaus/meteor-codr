@@ -18,15 +18,16 @@ Template.editor.rendered = function () {
     registerEditor({
         ed: editor,
         id: self.data.id,
-        path: self.data.path
+        path: self.data.path,        
+        dirty: false        
     });
 
-    editor.getSession().on('change', function (e) {
-
+    editor.getSession().on('change', function() {
+        editorSetDirty(editor, true);
     });
 
-    //var StatusBar = ace.require('ace/ext/statusbar').StatusBar;
-    //var statusBar = new StatusBar(editor, elmStatus);
+  //  var sb = ace.require('ace/ext/statusbar');
+  //  var statusBar = new sb.StatusBar(editor, elmStatus);
 
     $(elmEdit).css({
         position: "absolute",
@@ -46,7 +47,7 @@ Template.editor.rendered = function () {
             ace.config.loadModule("ace/ext/keybinding_menu", function (module) {
                 module.init(editor);
                 editor.showKeyboardShortcuts()
-            })
+            });
         }
     });
 
@@ -62,5 +63,5 @@ Template.editor.rendered = function () {
         readOnly: false // false if this command should not apply in readOnly mode
     });
 
-    editorLoadContent(editor, self.data.path);
+    editorLoadContent(editor, self.data.path);    
 }

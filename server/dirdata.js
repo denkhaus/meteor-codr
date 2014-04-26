@@ -4,7 +4,7 @@ var fs = Meteor.require('fs');
 function clearAllActiveState() {
     Files.update({}, {
         $set: {
-            active: " "
+            active: ""
         }
     }, {
         multiple: true
@@ -36,14 +36,15 @@ Meteor.methods({
                 Files.insert({
                     name: name,
                     path: path,
-                    active: "active"
+                    active: "active",
+                    dirty: false
                 });
             } else if (fAvailable) {
                 Files.update({
                     path: path
                 }, {
                     $set: {
-                        active: "active"
+                        active: "active"                     
                     }
                 });
             }

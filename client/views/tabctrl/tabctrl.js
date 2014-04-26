@@ -3,7 +3,7 @@ Template.tabctrl.rendered = function(){
 
     //TODO: look for a better way to do updating in blaze
     mutationsObserver($("#mainTab"), function (){
-        $(".closeTab").click(function () {
+        $(".btnCloseTab").click(function () {
             var tabContentId = $(this).parent().attr("href");
             var editorId = tabContentId.substring(1);
             Meteor.call('editorCloseFile',editorId, function(err){

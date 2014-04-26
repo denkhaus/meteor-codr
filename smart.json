@@ -8,6 +8,7 @@
     "crypto-base64": {
       "git": "https://github.com/denkhaus/meteor-crypto-base64.git"
     },
-    "pnotify": {}
+    "pnotify": {},
+    "bootstrap-select": {}
   }
 }

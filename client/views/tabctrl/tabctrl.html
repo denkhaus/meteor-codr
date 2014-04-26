@@ -1,0 +1,20 @@
+<template name="tabctrl">
+    <ul class="nav nav-tabs" id="mainTab">
+        {{#each files}}
+        <li class="{{active}}">
+            <a href="#{{_id}}" data-toggle="tab">
+                {{#if dirty}}
+                    <button class="close btnCloseTab dirty" type="button">&NonBreakingSpace;+</button>{{name}} 
+                {{else}}
+                    <button class="close btnCloseTab" type="button">&NonBreakingSpace;×</button>{{name}} 
+                {{/if}}
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+    <div class="tab-content">
+        {{#each files}}
+            <div class="tab-pane {{active}}" id="{{_id}}">{{> editor id=_id path=path}}</div>
+        {{/each}}
+    </div>
+</template>
