@@ -6,7 +6,10 @@
       "bootstrap3-less": {},
       "npm": {},
       "accounts-ui-bootstrap-3-blaze": {},
-      "ace-embed": {},
+      "ace-embed": {
+        "git": "https://github.com/denkhaus/meteor-ace-embed.git",
+        "branch": "master"
+      },
       "crypto-base64": {
         "git": "https://github.com/denkhaus/meteor-crypto-base64.git",
         "branch": "master"
@@ -36,9 +39,9 @@
         "commit": "a40b15f4b6213040accec10df97a7793e3a25225"
       },
       "ace-embed": {
-        "git": "https://github.com/stuartfenton/meteor-ace-embed.git",
-        "tag": "v0.0.4",
-        "commit": "027b0e1b0d06111b51a713f04a8b8750fdcbd289"
+        "git": "https://github.com/denkhaus/meteor-ace-embed.git",
+        "branch": "master",
+        "commit": "1acb1ce3cec0e8e69fefebf3dbbd144668e4f6c5"
       },
       "crypto-base64": {
         "git": "https://github.com/denkhaus/meteor-crypto-base64.git",
