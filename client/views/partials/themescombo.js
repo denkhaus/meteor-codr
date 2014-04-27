@@ -14,3 +14,7 @@ Template.themesComboBox.themes = function () {
   var thList = ace.require("ace/ext/themelist");
   return thList.themes;
 }
+
+Template.themesComboBox.disabled = function () {      
+  return Session.get('hasEditors') ;//? '' : 'disabled';
+}

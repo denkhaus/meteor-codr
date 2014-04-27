@@ -1,6 +1,6 @@
 <template name="themesComboBox">
     <form class="navbar-form navbar-left" role="search">
-        <select id="themesCombo" title='Select a Theme'>
+        <select class="show-tick" id="themesCombo" {{disabled}} title='Select a Theme'>
             {{#each themes}}
                 <option value="{{theme}}">{{desc}}</option>            
             {{/each}}
