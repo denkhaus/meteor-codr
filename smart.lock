@@ -15,7 +15,8 @@
         "branch": "master"
       },
       "pnotify": {},
-      "bootstrap-select": {}
+      "bootstrap-select": {},
+      "fs": {}
     },
     "packages": {
       "iron-router": {
@@ -58,6 +59,11 @@
         "tag": "v1.5.2",
         "commit": "61588ec8326987ded204724d85843eb6997cfcfb"
       },
+      "fs": {
+        "git": "https://github.com/peerlibrary/meteor-fs.git",
+        "tag": "v0.1.2",
+        "commit": "069d7fcaeb5df000a57238fde2785faf6dc1c37c"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
@@ -67,6 +73,16 @@
         "git": "https://github.com/oortcloud/meteor-crypto-base.git",
         "tag": "v3.1.2.1",
         "commit": "5df8d82a0595553415bbfae2930c6ecbeece5794"
+      },
+      "assert": {
+        "git": "https://github.com/peerlibrary/meteor-assert.git",
+        "tag": "v0.2.3",
+        "commit": "9c838fbf5053a9f4c9ea21cad8e2fef8f1374e7c"
+      },
+      "blocking": {
+        "git": "https://github.com/peerlibrary/meteor-blocking.git",
+        "tag": "v0.4.0",
+        "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
       }
     }
   }

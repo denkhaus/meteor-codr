@@ -6,8 +6,6 @@ Files.allow({
     remove: allowFileOperation
 });
 
-
-
 if (Meteor.isClient) {
     var query = Files.find({});
     var refreshThemesCombo = function (cnt) {
