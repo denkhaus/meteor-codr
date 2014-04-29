@@ -1,0 +1,54 @@
+<template name="settings">
+  {{> paneheader content="Settings"}}
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Editor
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          {{> themesComboBox}}
+          <label for="editFontSizeSpinner">Font Size</label>
+          <input id="editFontSizeSpinner" type="text" value="" name="editFontSizeSpinner">
+          <script>
+            $("input[id='editFontSizeSpinner']").TouchSpin({
+              initval: 12
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Content 2
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          Content2
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Content 3
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          Content3
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

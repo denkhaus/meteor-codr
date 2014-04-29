@@ -2,6 +2,7 @@
   <title>Hello Ace!</title>
   <script type="text/javascript" src="/js/jquery.layout-latest.js"></script> 
   <script type="text/javascript" src="/js/tree.jquery.js"></script>  
+  <script type="text/javascript" src="/js/bootstrap.touchspin.js"></script>  
 </head>
 <body> 
 </body>
@@ -10,8 +11,9 @@
 	<div id="lmain">
 		<div id="lcenter" class="ui-layout-center">
 			<div id="tabArea" class="ui-layout-center">{{> tabctrl}}</div>
-			<div class="ui-layout-south">South</div>
+			<div class="ui-layout-south">{{> console}}</div>
 		</div>		
 		<div class="ui-layout-west">{{> dirtree}}</div>
+    <div class="ui-layout-east">{{> settings}}</div>
 	</div>
 </template>

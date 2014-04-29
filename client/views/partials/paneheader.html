@@ -1,0 +1,10 @@
+<template name="paneheader">
+  <div class="paneheader">
+    {{#if content}}
+      {{content}}
+    {{/if}}
+    {{#if template}} 
+      {{> subtemplate}}
+    {{/if}}    
+  </div>
+</template>

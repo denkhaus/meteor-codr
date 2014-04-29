@@ -27,16 +27,18 @@ Template.dirtree.rendered = function(){
     	});
 	});
 };
-
-Template.dirtreeoptions.rendered = function(){	
-	$('#btnShowHidden').click(function () {
-		var label = $(this);
-		var checked = !label.hasClass('active');		
-		var txt = label.text();
-		label.text("Load Directory...");
-		refreshTreeView(checked, function(error, data){
-			$('#dirtree').tree('loadData', [data]);
-			label.text(txt);
-		});    
-	});
+Template.dirtreeoptions.rendered = function () {
+  $('#btnShowHidden').click(function () {
+    var label = $(this);
+    var checked = !label.hasClass('active');
+    label.text("Load Directory...");
+    refreshTreeView(checked, function (error, data) {
+      if (!error) {
+        $('#dirtree').tree('loadData', [data]);
+        setSetting("treeview.showhidden", checked);
+        var txt = checked ? "Hide hidden" : "Show hidden";
+        label.text(txt);
+      }
+    });
+  });
 };

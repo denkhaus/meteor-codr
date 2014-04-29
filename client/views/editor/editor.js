@@ -10,11 +10,6 @@ Template.editor.rendered = function () {
 
   var editor = ace.edit(newEditorId);
 
-  var currentTheme = getSetting("editor.theme", "ace/theme/monokai");
-  editor.setTheme(currentTheme);
-  editor.setHighlightActiveLine(true);
-  editor.setAutoScrollEditorIntoView();
-
   registerEditor({
     ed: editor,
     id: self.data.id,
@@ -31,7 +26,7 @@ Template.editor.rendered = function () {
 
   $(elmEdit).css({
     position: "absolute",
-    top: 40,
+    top: 66,
     right: 0,
     bottom: 0,
     left: 0
@@ -64,4 +59,8 @@ Template.editor.rendered = function () {
   });
 
   editorLoadContent(editor, self.data.path);
-}
+};
+
+Template.editor.context = function () {
+  return editorGetContextById(this.id);
+};

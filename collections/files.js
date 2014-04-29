@@ -10,7 +10,7 @@ Files.allow({
 
 if (Meteor.isClient) {
     var query = Files.find({});
-    var setHasEditors = function (cnt) {
+    var refreshThemesCombo = function (cnt) {
         $('#themesCombo').prop('disabled', cnt === 0);
         $('#themesCombo').selectpicker('refresh');        
     };
@@ -19,11 +19,11 @@ if (Meteor.isClient) {
     query.observeChanges({
         added: function () {
             count++
-            setHasEditors(count);
+            refreshThemesCombo(count);
         },
         removed: function () {
             count--
-            setHasEditors(count);
+            refreshThemesCombo(count);
         }
     });    
 }
