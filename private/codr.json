@@ -1,7 +1,12 @@
 {
     "default": {
+      "ide": {
         "showhiddenfiles": false,
         "showconsole": false,
-        "showsettings": false
+        "showsettings": false,
+        "editor" :{
+          "theme":"ace/theme/monokai"        
+        }
+      }
     }
 }

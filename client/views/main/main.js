@@ -25,7 +25,8 @@ Template.main.rendered = function () {
       closable: true,
       resizable: true,
       slidable: true,
-      livePaneResizing: true
+      livePaneResizing: true,
+      initClosed: true
     }
     //,onresize: function(name, elm, state, options, layout){
     //    if(name == "center"){
@@ -40,4 +41,20 @@ Template.main.rendered = function () {
   $('#btnShowConsole').click(function () {
     centerLayout.toggle('south');
   });
+  
+  getSetting("ide.showconsole", function(value){
+    if(value){
+      centerLayout.show('south');
+    }else{
+      centerLayout.hide('south');
+    }
+  });
+  
+  getSetting("ide.showsettings", function(value){
+    if(value){
+      mainLayout.show('south');
+    }else{
+      mainLayout.hide('south');
+    }
+  });  
 };

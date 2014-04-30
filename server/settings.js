@@ -1,6 +1,5 @@
 var nconf = Meteor.require('nconf');
 
-
 function loadDefaultSettings() {
     var settings = Assets.getText('codr.json');
     if (settings) {
@@ -33,20 +32,13 @@ Meteor.startup(function () {
 
 Meteor.methods({
     getSetting: function (settingId) {
-        //var setting = nconf.get(settingId);
-        return settingId;//"sdfjkl";//setting ? setting : new Meteor.Error(404, 'Not found');
+      var setting = nconf.get("default:" + settingId);
+        return setting ? setting : new Meteor.Error(404, 'Not found');
     },
-
+  
     setSetting: function (settingId, setting) {
         if (settingId) {
-            nconf.set(settingId, setting, function(err){
-                if(!err){
-                    
-                }else{
-                    new Meteor.Error(500, 'SetSetting Error', err);
-                }                
-            });
+            nconf.set(settingId, setting);
         }
-
     }
 });

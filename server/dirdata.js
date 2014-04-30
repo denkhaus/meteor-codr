@@ -1,5 +1,5 @@
 var dir2json = Meteor.require('dir2json');
-var fs = Meteor.require('fs');
+//var fs = Meteor.require('fs');
 
 function clearAllActiveState() {
   Files.update({}, {
@@ -25,7 +25,9 @@ Meteor.methods({
 
   workingDirGetData: function (includeDotFiles) {
     if (allowFileOperation(this.userId)) {
-      return dir2json("/home/denkhaus/gate/dev/meteor", includeDotFiles);
+      
+      var base = process.env.PWD;//"/home/action/workspace"
+      return dir2json(base, includeDotFiles);
     } else {
       return new Meteor.Error(405, 'Not allowed');
     }
